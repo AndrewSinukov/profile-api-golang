@@ -18,7 +18,7 @@ func GetConfig() *Config {
 			Dialect:  "mysql",
 			Username: "root",
 			Password: "root",
-			Name:     "amo_media_test_task_go",
+			Name:     "profile_api_golang_bd",
 			Charset:  "utf8",
 		},
 	}

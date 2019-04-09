@@ -7,14 +7,19 @@ import (
 
 type Profile struct {
 	gorm.Model
-	Codes int `gorm:"column:codes"`
-	Name string `gorm:"column:name" json:"name"`
-	Author string   `gorm:"column:author" json:"author"`
-	Category string `gorm:"column:category" json:"category"`
+	ID int `gorm:"column:id" json:"id"`
+	FirstName string `gorm:"column:first_name" json:"first_name"`
+	LastName string   `gorm:"column:last_name" json:"last_name"`
+	PhoneNumber string `gorm:"column:phone_number" json:"phone_number"`
+}
+
+type Address struct {
+	City  string `gorm:"column:city" json:"city"`
+	State string `gorm:"column:state" json:"state"`
 }
 
 func (b *Profile) TableName() string {
-  return "Profiles"
+  return "profiles"
 }
 
 func InsertProfile(db *gorm.DB, b *Profile) (err error) {
@@ -32,7 +37,7 @@ func GetAllProfile(db *gorm.DB, b *[]Profile) (err error) {
 }
 
 func OneProfileGetting(db *gorm.DB, ids int, b *Profile) (err error) {
-	if err := db.Where("codes = ?", ids).First(&b).Error; err != nil {
+	if err := db.Where("id = ?", ids).First(&b).Error; err != nil {
 		return err
 	}
 	return nil

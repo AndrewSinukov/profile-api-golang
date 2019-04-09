@@ -36,9 +36,9 @@ func (a *App) Initialize(config *config.Config) {
 func (a *App) setRouters() {
 	a.Post("/profile", a.InputProfile)
 	a.Get("/profile", a.ListProfiles)
-	a.Get("/profile/{codes:[1-9]+}", a.OneProfile)
-	a.Put("/profile/{codes:[1-9]+}", a.UpdateProfile)
-	a.Delete("/profile/{codes:[1-9]+}", a.DeletedProfile)
+	a.Get("/profile/{id:[1-9]+}", a.OneProfile)
+	a.Put("/profile/{id:[1-9]+}", a.UpdateProfile)
+	a.Delete("/profile/{id:[1-9]+}", a.DeletedProfile)
 }
 
 func (a *App) Post(path string, f func(w http.ResponseWriter, r *http.Request)) {
